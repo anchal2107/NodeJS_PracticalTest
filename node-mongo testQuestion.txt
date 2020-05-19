@@ -1,0 +1,25 @@
+Event Management System (NodeJs + Postgres)
+
+- USER
+  - Register (User can register)
+  - Login (User login)
+  - Logout (User logout)
+  - Change Password (User can change his password)
+  - Update Password (When request for reset password is done, to set new password)
+  - Reset Password (In API response send info regarding to update-password)
+
+
+- Event (Authentication required for doing operations on event)
+  - Create (User can create Event)
+  - Invite (Users) // Just store emails and when that user login in he can see his created event list and also events in which he is invited
+  - List (Invited users when login can see their events as well events events in which they are invited in, also display creator name in list)
+    - Sorting
+    - Date Filter
+    - Search Filter
+  - Event Detail + list of users invited (API to get specific event and invites)
+  - Event update (Event Update)
+
+Notes:
+- Consider models as per your knowledge
+- Create Postman for above APIs
+GANI@LOGICWIND.COM /
