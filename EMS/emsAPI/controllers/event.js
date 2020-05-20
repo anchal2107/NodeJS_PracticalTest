@@ -122,6 +122,8 @@ exports.listAllEvents = (req, res, next) => {
 };
 
 exports.getEventbyName = (req, res, next) => {
+    //db.stuff.find( { foo: /^bar$/i } );
+    //for case insensitive just need to use above line
   const eventName = req.body.eventName;
   model.find({ eventName: eventName }, function (err, doc) {
     if (!err) {
@@ -413,11 +415,34 @@ var isAlreadyMember = thisEventmembers.filter((item) => {
 };
 
 exports.searchEvents = (req, res, next) => {
-  res.status(200).json("Going Good! Event is also fine");
+  //res.status(200).json("Going Good! Event is also fine");
   // here will have search from a text in mongo db some what similar event will be searched for user here .
   //db.collection.createIndex( { "$**": "text" } ) on all field if we want
   //currently setting only on eventname
   //db.reviews.createIndex( { comments: "text" } )
   // db.collection.createIndex()
   //https://docs.mongodb.com/manual/core/index-text/
+
+
+//   MongoDB Enterprise > db.events.createIndex( { eventName: "text" } );
+//   {
+//           "createdCollectionAutomatically" : false,
+//           "numIndexesBefore" : 1,
+//           "numIndexesAfter" : 2,
+//           "ok" : 1
+//   }
+//   MongoDB Enterprise >
+//{ $text: { $search: "zirst Event11" } }
+const search = req.body.search;
+model.find({ $text: { $search: search } }, function (err, doc) {
+  if (!err) {
+    if (doc != null && doc.length > 0) {
+      res.status(200).json(doc);
+    } else {
+      res.status(404).json({ message: "No Data Found!" });
+    }
+  } else {
+    res.status(500).json({ message: err });
+  }
+});
 };
