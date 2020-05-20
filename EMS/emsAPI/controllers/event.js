@@ -128,6 +128,91 @@ exports.listAllEvents = (req, res, next) => {
   });
 };
 
+exports.getEventbyName = (req, res, next) => {
+    const eventName = req.body.eventName;
+    model.find({ eventName: eventName }, function (err, doc) {
+      if (!err) {
+        if (doc != null && doc.length > 0) {
+          res.status(200).json(doc);
+        } else {
+          res.status(404).json({ message: "No Data Found!" });
+        }
+      } else {
+        res.status(500).json({ message: err });
+      }
+    });
+  };
+
+  exports.checkMyEventAndInvites = (req, res, next) => {
+    // for the given email id
+    //get all event name where person is member
+    //get all eventname where person is invited
+    const myemail = req.body.email;
+    var filterQuery = {
+      $or: [{ "members.userEmail": myemail }, { "invited.userEmail": myemail }],
+    };
+    model.find(filterQuery, function (err, doc) {
+      if (!err) {
+        if (doc != null && doc.length > 0) {
+          res.status(200).json(doc);
+        } else {
+          res.status(404).json({ message: "No Data Found!" });
+        }
+      } else {
+        res.status(500).json({ message: err });
+      }
+    });
+  };
+
+
+  exports.updateEvent = (req, res, next) => {
+    var eventName = req.body.eventName;
+    var updateDictionaryList = req.body.updateDictionaryList;
+    var paramfilterquery = { eventName: eventName };
+    // var updateDictionaryList = [
+    //   { key: "details", value: "details" }
+    // ];
+    const updateOps = {};
+    for (const ops of updateDictionaryList) {
+      updateOps[ops.key] = ops.value;
+    }
+    var filterQuery = paramfilterquery;
+    var UpdateQuery = { $set: updateOps };
+    model.updateOne(filterQuery, UpdateQuery, function (err, doc) {
+      if (!err) {
+        res.status(200).json({
+          message: `updated SuccessFully ${doc}`,
+          status: true,
+        });
+      } else {
+        res.status(500).json({ message: err });
+        // return { message: `error occoured ${err}`, status: false };
+      }
+    });
+  
+    // update event description here vai event name.
+  };
+  
+
+  exports.getSortEventByName = (req, res, next) => {
+    // show event name
+    //member of event
+    // invites of event
+    var mysort = {eventName: 1}
+    model.find({}, function (err, doc) {
+      if (!err) {
+        if (doc != null && doc.length > 0) {
+          res.status(200).json(doc);
+        } else {
+          res.status(404).json({ message: "No Data Found!" });
+        }
+      } else {
+        res.status(500).json({ message: err });
+      }
+    }).sort(mysort);
+  };
+  
+
 
 exports.invitInEvent = (req, res, next) => {
   //the one who create event is alway admin and when person who will accept invitation they will be member of group okay
@@ -135,9 +220,7 @@ exports.invitInEvent = (req, res, next) => {
   var invitEmails = req.body.emails;
   //before sending a invit we can check if no already given a invitation or already in member list we can check this
   var paramfilterquery = { eventName: eventName };
-  var updateDictionaryList = [
-    { key: "password", value: encryptedPassword }
-  ];
+  var updateDictionaryList = [{ key: "password", value: encryptedPassword }];
   const updateOps = {};
   for (const ops of updateDictionaryList) {
     updateOps[ops.key] = ops.value;
@@ -146,12 +229,10 @@ exports.invitInEvent = (req, res, next) => {
   var UpdateQuery = { $set: updateOps };
   model.updateOne(filterQuery, UpdateQuery, function (err, doc) {
     if (!err) {
-      res
-        .status(200)
-        .json({
-          message: `updated SuccessFully ${doc}`,
-          status: true
-        });
+      res.status(200).json({
+        message: `updated SuccessFully ${doc}`,
+        status: true,
+      });
     } else {
       res.status(500).json({ message: err });
       // return { message: `error occoured ${err}`, status: false };
@@ -159,38 +240,26 @@ exports.invitInEvent = (req, res, next) => {
   });
 };
 
-exports.checkMyEventAndInvites = (req, res, next) => {
-  // for the given email id
-  //get all event name where person is member
-  //get all eventname where person is invited
-  res.status(200).json("Going Good! Event is also fine");
-};
 
-exports.getSortEventByName = (req, res, next) => {
-  // show event name
-  //member of event
-  // invites of event
-  res.status(200).json("Going Good! Event is also fine");
-};
-
-exports.updateEvent = (req, res, next) => {
-    res.status(200).json("Going Good! Event is also fine");
-  // update event description here vai event name.
-};
 
 exports.updateJoinEvent = (req, res, next) => {
-    res.status(200).json("Going Good! Event is also fine");
+  res.status(200).json("Going Good! Event is also fine");
   // this mean that person is accepting invitation so ... he will be member of event
   // here will update a person email
   // email will be added in member list and will be detelet from intivation list
 };
 
-
 exports.searchEvents = (req, res, next) => {
-    res.status(200).json("Going Good! Event is also fine");
+  res.status(200).json("Going Good! Event is also fine");
   // here will have search from a text in mongo db some what similar event will be searched for user here .
+  //db.collection.createIndex( { "$**": "text" } ) on all field if we want
+  //currently setting only on eventname
+  //db.reviews.createIndex( { comments: "text" } )
+  // db.collection.createIndex()
+  //https://docs.mongodb.com/manual/core/index-text/
 };
 exports.filterByDate = (req, res, next) => {
-    // here will have search from a text in mongo db some what similar event will be searched for user here .
-    res.status(200).json("Going Good! Event is also fine"); 
+  // here will have search from a text in mongo db some what similar event will be searched for user here .
+
+  res.status(200).json("Going Good! Event is also fine");
 };
