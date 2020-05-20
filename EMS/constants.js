@@ -7,3 +7,6 @@ module.exports.mongoDb_URL1="mongodb://anchal:agarwal@myserveramc.ddns.net:27017
 module.exports.mongoDb_DataBaseName= "EMS_Test_db";
 module.exports.jwt_PrivateKey= "abc1234";
 module.exports.bycrpt_Salt=10;
+
+module.exports.frontEnd_Port='3900';
+module.exports.aPI_Port='3400';

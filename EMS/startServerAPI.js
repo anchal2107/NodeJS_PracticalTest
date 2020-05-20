@@ -6,8 +6,8 @@
 // const server = http.createServer(appserver);
 // server.listen(port , ()=> console.log(`API server Started ${port}`))
 
-
-var app = require('./appServer')
+var constants = require('./constants');
+var app = require('./appServerAPI')
 var debug = require('debug')('ems:server');
 var http = require('http');
 
@@ -15,7 +15,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3400');
+var port = normalizePort(process.env.PORT || constants.aPI_Port);
 app.set('port', port);
 
 /**

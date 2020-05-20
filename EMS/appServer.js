@@ -1,78 +1,41 @@
-const constants = require('./constants')
-//#region  "Mongodb url will be added here" 
- const mongoose = require('mongoose');
-//const url =process.env.Mongodb_URL1+ process.env.MongoDb_DataBaseName1;
-const url =constants.Mongodb_URL2+ constants.mongoDb_DataBaseName;
-//const url =constants.mongoDb_URL2full;
-console.log(`Connection of Mongoose before connect ${mongoose.connection.readyState}`);
-console.log(` this is url of mongodb ${url}`);
-mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true });
-console.log(`Connection of Mongoose ${mongoose.connection.readyState==2?'DBConnected':'Not Connected'}`);
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-// console.log(mongoose.connection.readyState);
-// ready states being:
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 
-// 0: disconnected
-// 1: connected
-// 2: connecting
-// 3: disconnecting
+var app = express();
 
-//#endregion
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-
-const express = require("express");
-const bodyParser = require("body-parser");
-const morgan = require("morgan");
-const cors = require("cors");
-const app = express();
-
-app.use(express.urlencoded());
-
-// Parse JSON bodies (as sent by API clients)
+app.use(logger('dev'));
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended:false}));
- app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-const eventRoutes = require("./emsAPI/routers/events");
-const userRoutes = require("./emsAPI/routers/users");
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
-app.use('/api/event', eventRoutes);
-app.use('/api/user', userRoutes);
-
-//this will log 
-app.use(morgan('dev'));
-
-
- 
-
- app.use((req,res,next)=>{
- res.header('Access-Control-Allow-Origin','*');
- res.header('Access-Control-Allow-Headers','Origin, X-Requested-With, Content-Type, Accept, Authorization');
- if (req.method== 'OPTIONS')
- {
-     res.header('Access=Control-Alow-Methods','PUT, POST, PATCH, DELETE, GET');
-     return res.status(200).json({});
- }
- next();
- });
-
-app.use(cors());
-
-
-app.use((req, resp, next) => {
-    const error = new Error("Not Found!");
-    error.status=404;
-    next(error);
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
 });
 
-app.use((error, req, res, next) => {
-    res.status(error.status || 500);
-    res.json({
-        error: {
-            message: error.message
-        }
-    });
-});
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
 module.exports = app;

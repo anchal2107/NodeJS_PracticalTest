@@ -1,12 +1,13 @@
-var app = require('./app')
+var app = require('./appServer')
 var debug = require('debug')('ems:server');
 var http = require('http');
+var constants = require('./constants');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3900');
+var port = normalizePort(process.env.PORT || constants.frontEnd_Port);
 app.set('port', port);
 
 /**
