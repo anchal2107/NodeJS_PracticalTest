@@ -39,6 +39,329 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "listAllEvents",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/event/listAllEvents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"event",
+								"listAllEvents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createSimpleEvent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"eventName\": \"First Evesdnt11\",\n    \"userEmail\": \"add207@yahoo.com\",\n    \"details\":\"details ofr emvetn\"\n   \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/event/createSimpleEvent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"event",
+								"createSimpleEvent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEventbyName",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"eventName\": \"Ffvesdnt11\"\n   \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/event/getEventbyName",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"event",
+								"getEventbyName"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkMyEventAndInvites",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"add207@yahoo.com\"\n   \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/event/checkMyEventAndInvites",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"event",
+								"checkMyEventAndInvites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEvent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"eventName\": \"First Esdfsdfvesdnt11\",\n    \"updateDictionaryList\":[ { \"key\": \"details\", \"value\": \"details\" }]\n   \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/event/updateEvent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"event",
+								"updateEvent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSortEventByName",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/event/getSortEventByName",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"event",
+								"getSortEventByName"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filterByDate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"startdate\":\"2020-05-15\",\n\"enddate\":\"2020-05-19\"}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/event/filterByDate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"event",
+								"filterByDate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "invitInEvent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"eventName\":\"Ffvesdnt11\",\n\"emails\":\"hello,hello123@yahoo.com\"\n\t}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/event/invitInEvent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"event",
+								"invitInEvent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateJoinEvent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"eventName\":\"Ffvesdnt11\",\n\"myemail\":\"hello123@yahoo.com\"\n\t}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/event/updateJoinEvent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"event",
+								"updateJoinEvent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchEvents",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"search\":\"Ffvesdnt11\"}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/event/searchEvents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"event",
+								"searchEvents"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
