@@ -1,0 +1,84 @@
+[{
+  "_id": {
+    "$oid": "5ec518cd6e384a38643e269e"
+  },
+  "eventName": "zirst Event11",
+  "userEmail": "add207@yahoo.com",
+  "doc": {
+    "$date": "2020-05-15T11:47:25.177Z"
+  },
+  "members": [],
+  "invited": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ec51b4bfc96fc49088a353f"
+  },
+  "eventName": "First Evesdnt11",
+  "userEmail": "add207@yahoo.com",
+  "doc": {
+    "$date": "2020-05-20T11:58:03.277Z"
+  },
+  "members": [],
+  "invited": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ec51c22a7f7773780e9ddda"
+  },
+  "eventName": "First Esdfsdfvesdnt11",
+  "userEmail": "add207@yahoo.com",
+  "members": [
+    {
+      "isActive": true,
+      "isAdmin": true,
+      "_id": {
+        "$oid": "5ec51c22a7f7773780e9dddb"
+      },
+      "userEmail": "add207@yahoo.com",
+      "date": {
+        "$date": "2020-05-20T12:01:38.464Z"
+      }
+    }
+  ],
+  "doc": {
+    "$date": "2020-05-20T12:01:38.465Z"
+  },
+  "invited": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ec5255f61e7f04cb89ba2be"
+  },
+  "eventName": "Ffvesdnt11",
+  "userEmail": "add207@yahoo.com",
+  "members": [
+    {
+      "isActive": true,
+      "isAdmin": true,
+      "_id": {
+        "$oid": "5ec5255f61e7f04cb89ba2bf"
+      },
+      "date": {
+        "$date": "2020-05-20T12:41:03.083Z"
+      },
+      "userEmail": "add207@yahoo.com"
+    },
+    {
+      "isActive": true,
+      "isAdmin": false,
+      "_id": {
+        "$oid": "5ec57295393da92c344949e0"
+      },
+      "userEmail": "hello123@yahoo.com",
+      "date": {
+        "$date": "2020-05-20T18:10:29.615Z"
+      }
+    }
+  ],
+  "invited": [],
+  "doc": {
+    "$date": "2020-05-20T12:41:03.084Z"
+  },
+  "__v": 0
+}]
