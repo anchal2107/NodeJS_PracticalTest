@@ -17,4 +17,5 @@ router.post("/updateEvent", controller.updateEvent);
 router.post("/updateJoinEvent", controller.updateJoinEvent);
 router.post("/SearchEvents", controller.searchEvents);
 router.post("/filterByDate", controller.filterByDate);
+router.post("/getEventbyName", controller.getEventbyName);
 module.exports = router;
