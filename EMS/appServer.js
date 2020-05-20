@@ -9,8 +9,8 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-// const morgan = require("morgan");
-// const cors = require("cors");
+const morgan = require("morgan");
+const cors = require("cors");
 const app = express();
 
 
@@ -19,7 +19,7 @@ const app = express();
 const eventRoutes = require("./emsAPI/routers/events");
 const userRoutes = require("./emsAPI/routers/users");
 //this will log 
-//app.use(morgan('dev'));
+app.use(morgan('dev'));
 
 
  app.use(bodyParser.urlencoded({extended:false}));
@@ -36,7 +36,7 @@ const userRoutes = require("./emsAPI/routers/users");
  next();
  });
 
-//app.use(cors());
+app.use(cors());
 
 app.use('/api/event', eventRoutes);
 app.use('/api/user', userRoutes);
