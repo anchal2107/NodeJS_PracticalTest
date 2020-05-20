@@ -22,7 +22,7 @@ Event Management System (NodeJs + Postgres)
 Notes:
 - Consider models as per your knowledge
 - Create Postman for above APIs
-GANI@LOGICWIND.COM /
+
 
 
 
@@ -35,5 +35,3 @@ Need to use MongoDb as database or postgresSQL
 What about front end, "Api are okay.", But do i need to create front-end in form of HTML page in nodeJs it-self right?
 - No need for frontend, just create rest apis and please create postman for them and share it along with the code.
 
-Regards
-Gani Padela
