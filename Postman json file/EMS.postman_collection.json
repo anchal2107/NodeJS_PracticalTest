@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "259fd887-afd5-4e1b-bb55-7e677b7abf5e",
+		"name": "EMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "event",
+			"item": [
+				{
+					"name": "createComplexEvent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"eventName\": \"Ffvesdnt11\",\n    \"userEmail\": \"add207@yahoo.com\",\n    \"details\":\"details ofr emvetn\",\n    \"invitations\":\"hello,abc.xyz\"\n   \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/event/createComplexEvent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"event",
+								"createComplexEvent"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"ancwhaddl2\",\n    \"email\": \"add207@yahoo.com\",\n    \"password\": \"abc\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/user/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changePassword with middleware",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNkZkB5YWhvby5jb20iLCJ1c2VybmFtZSI6ImFuY2RzZGZzd2hhZGRsMiIsInVzZXJpZCI6IjVlYzRlNTNhZTBiYzczNTRjYzEzMmQ4MiIsImlhdCI6MTU4OTk3MDcwNywiZXhwIjoxNTg5OTc0MzA3fQ.71-6kLaFk6AtzDttd1yYUOaGSnf_fimdyAdmz353f8I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"email\": \"sdf@yahoo.com\",\n        \"password\":\"abc\"\n}\n\n"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/user/changePassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"user",
+								"changePassword"
+							]
+						},
+						"description": "dont forget to change token from header middle where example"
+					},
+					"response": []
+				},
+				{
+					"name": "signin get jwt here",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"email\": \"sdf@yahoo.com\",\n        \"password\":\"helloanchal\"\n}\n\n"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/user/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"user",
+								"signin"
+							]
+						},
+						"description": "you will get token here"
+					},
+					"response": []
+				},
+				{
+					"name": "updatePassword _only after resetPassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"email\": \"sdf@yahoo.com\",\n        \"otp\": \"656zdU\",\n        \"password\":\"helloanchal\"\n}\n\n"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/user/updatePassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"user",
+								"updatePassword"
+							]
+						},
+						"description": "you will get otp in reset password and boolen will be true because of that okay"
+					},
+					"response": []
+				},
+				{
+					"name": "resetPassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"email\": \"sdf@yahoo.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/user/resetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"user",
+								"resetPassword"
+							]
+						},
+						"description": "otp will be generated here"
+					},
+					"response": []
+				},
+				{
+					"name": "testReturn2 post test",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"keys\":\"hello\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/user/testReturn2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"user",
+								"testReturn2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user  getalluser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
