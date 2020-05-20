@@ -1,9 +1,22 @@
+const constants = require('./constants')
 //#region  "Mongodb url will be added here" 
-// const mongoose = require('mongoose');
-// //const url =process.env.Mongodb_URL1+ process.env.MongoDb_DataBaseName1;
-// //const url =process.env.Mongodb_URL2+ process.env.MongoDb_DataBaseName2;
-// const url ='test';
-// mongoose.connect(url,{ useNewUrlParser: true });
+ const mongoose = require('mongoose');
+//const url =process.env.Mongodb_URL1+ process.env.MongoDb_DataBaseName1;
+const url =constants.Mongodb_URL2+ constants.mongoDb_DataBaseName;
+//const url =constants.mongoDb_URL2full;
+console.log(`Connection of Mongoose before connect ${mongoose.connection.readyState}`);
+console.log(` this is url of mongodb ${url}`);
+mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true });
+console.log(`Connection of Mongoose ${mongoose.connection.readyState==2?'DBConnected':'Not Connected'}`);
+
+// console.log(mongoose.connection.readyState);
+// ready states being:
+
+// 0: disconnected
+// 1: connected
+// 2: connecting
+// 3: disconnecting
+
 //#endregion
 
 
@@ -13,17 +26,24 @@ const morgan = require("morgan");
 const cors = require("cors");
 const app = express();
 
+app.use(express.urlencoded());
 
-
+// Parse JSON bodies (as sent by API clients)
+app.use(express.json());
+app.use(bodyParser.urlencoded({extended:false}));
+ app.use(bodyParser.json());
 
 const eventRoutes = require("./emsAPI/routers/events");
 const userRoutes = require("./emsAPI/routers/users");
+
+app.use('/api/event', eventRoutes);
+app.use('/api/user', userRoutes);
+
 //this will log 
 app.use(morgan('dev'));
 
 
- app.use(bodyParser.urlencoded({extended:false}));
- app.use(bodyParser.json());
+ 
 
  app.use((req,res,next)=>{
  res.header('Access-Control-Allow-Origin','*');
@@ -38,8 +58,6 @@ app.use(morgan('dev'));
 
 app.use(cors());
 
-app.use('/api/event', eventRoutes);
-app.use('/api/user', userRoutes);
 
 app.use((req, resp, next) => {
     const error = new Error("Not Found!");
