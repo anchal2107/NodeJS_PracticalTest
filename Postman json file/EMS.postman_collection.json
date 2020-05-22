@@ -18,6 +18,11 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inh5ekB5YWhvby5jb20iLCJ1c2VybmFtZSI6InRlc3QxIiwidXNlcmlkIjoiNWVjN2M1NjNmNDQwM2YxMWNjMGFkZjVjIiwiaWF0IjoxNTkwMTUxMzM2LCJleHAiOjE1OTAxNTQ5MzZ9.F_vsLlDGnOC2Sl_OLNZNw_AspeGioctm7FXuF-WD4EI",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -85,11 +90,16 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inh5ekB5YWhvby5jb20iLCJ1c2VybmFtZSI6InRlc3QxIiwidXNlcmlkIjoiNWVjN2M1NjNmNDQwM2YxMWNjMGFkZjVjIiwiaWF0IjoxNTkwMTUxMzM2LCJleHAiOjE1OTAxNTQ5MzZ9.F_vsLlDGnOC2Sl_OLNZNw_AspeGioctm7FXuF-WD4EI",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"eventName\": \"First Evesdnt11\",\n    \"userEmail\": \"add207@yahoo.com\",\n    \"details\":\"details ofr emvetn\"\n   \n}"
+							"raw": "{\n    \"eventName\": \"Event1\",\n    \"userEmail\": \"add207@yahoo.com\",\n    \"details\":\"details ofr emvetn\"\n   \n}"
 						},
 						"url": {
 							"raw": "http://localhost:3400/api/event/createSimpleEvent",
@@ -116,6 +126,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inh5ekB5YWhvby5jb20iLCJ1c2VybmFtZSI6InRlc3QxIiwidXNlcmlkIjoiNWVjN2M1NjNmNDQwM2YxMWNjMGFkZjVjIiwiaWF0IjoxNTkwMTUxMzM2LCJleHAiOjE1OTAxNTQ5MzZ9.F_vsLlDGnOC2Sl_OLNZNw_AspeGioctm7FXuF-WD4EI",
 								"type": "text"
 							}
 						],
@@ -149,6 +164,11 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inh5ekB5YWhvby5jb20iLCJ1c2VybmFtZSI6InRlc3QxIiwidXNlcmlkIjoiNWVjN2M1NjNmNDQwM2YxMWNjMGFkZjVjIiwiaWF0IjoxNTkwMTUxMzM2LCJleHAiOjE1OTAxNTQ5MzZ9.F_vsLlDGnOC2Sl_OLNZNw_AspeGioctm7FXuF-WD4EI",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -180,6 +200,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inh5ekB5YWhvby5jb20iLCJ1c2VybmFtZSI6InRlc3QxIiwidXNlcmlkIjoiNWVjN2M1NjNmNDQwM2YxMWNjMGFkZjVjIiwiaWF0IjoxNTkwMTUxMzM2LCJleHAiOjE1OTAxNTQ5MzZ9.F_vsLlDGnOC2Sl_OLNZNw_AspeGioctm7FXuF-WD4EI",
 								"type": "text"
 							}
 						],
@@ -213,6 +238,11 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inh5ekB5YWhvby5jb20iLCJ1c2VybmFtZSI6InRlc3QxIiwidXNlcmlkIjoiNWVjN2M1NjNmNDQwM2YxMWNjMGFkZjVjIiwiaWF0IjoxNTkwMTUxMzM2LCJleHAiOjE1OTAxNTQ5MzZ9.F_vsLlDGnOC2Sl_OLNZNw_AspeGioctm7FXuF-WD4EI",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -244,6 +274,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inh5ekB5YWhvby5jb20iLCJ1c2VybmFtZSI6InRlc3QxIiwidXNlcmlkIjoiNWVjN2M1NjNmNDQwM2YxMWNjMGFkZjVjIiwiaWF0IjoxNTkwMTUxMzM2LCJleHAiOjE1OTAxNTQ5MzZ9.F_vsLlDGnOC2Sl_OLNZNw_AspeGioctm7FXuF-WD4EI",
 								"type": "text"
 							}
 						],
@@ -277,6 +312,11 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inh5ekB5YWhvby5jb20iLCJ1c2VybmFtZSI6InRlc3QxIiwidXNlcmlkIjoiNWVjN2M1NjNmNDQwM2YxMWNjMGFkZjVjIiwiaWF0IjoxNTkwMTUxMzM2LCJleHAiOjE1OTAxNTQ5MzZ9.F_vsLlDGnOC2Sl_OLNZNw_AspeGioctm7FXuF-WD4EI",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -308,6 +348,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inh5ekB5YWhvby5jb20iLCJ1c2VybmFtZSI6InRlc3QxIiwidXNlcmlkIjoiNWVjN2M1NjNmNDQwM2YxMWNjMGFkZjVjIiwiaWF0IjoxNTkwMTUxMzM2LCJleHAiOjE1OTAxNTQ5MzZ9.F_vsLlDGnOC2Sl_OLNZNw_AspeGioctm7FXuF-WD4EI",
 								"type": "text"
 							}
 						],
@@ -341,6 +386,11 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inh5ekB5YWhvby5jb20iLCJ1c2VybmFtZSI6InRlc3QxIiwidXNlcmlkIjoiNWVjN2M1NjNmNDQwM2YxMWNjMGFkZjVjIiwiaWF0IjoxNTkwMTUxMzM2LCJleHAiOjE1OTAxNTQ5MzZ9.F_vsLlDGnOC2Sl_OLNZNw_AspeGioctm7FXuF-WD4EI",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -358,6 +408,43 @@
 								"api",
 								"event",
 								"searchEvents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchFilterDateSort",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inh5ekB5YWhvby5jb20iLCJ1c2VybmFtZSI6InRlc3QxIiwidXNlcmlkIjoiNWVjN2M1NjNmNDQwM2YxMWNjMGFkZjVjIiwiaWF0IjoxNTkwMTU2NjA1LCJleHAiOjE1OTAxNjAyMDV9.k85qmtnNJe7JEd2I4MoIl-bIRBZvTO-c6Kb_ZuWOoYE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dateFilter\": {\n        \"startdate\": \"2020-05-16\",\n        \"enddate\": \"2020-05-21\"\n    },\n    \"isSortByEventName\":false,\n   \"eventNameSearch\": \"First\"\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3400/api/event/searchFilterDateSort",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3400",
+							"path": [
+								"api",
+								"event",
+								"searchFilterDateSort"
 							]
 						}
 					},
@@ -382,7 +469,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"userName\": \"ancwhaddl2\",\n    \"email\": \"add207@yahoo.com\",\n    \"password\": \"abc\"\n}"
+							"raw": "{\n    \"userName\": \"test1\",\n    \"email\": \"xyzd@yahoo.com\",\n    \"password\": \"abc\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3400/api/user/signup",
@@ -452,7 +539,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n      \"email\": \"sdf@yahoo.com\",\n        \"password\":\"helloanchal\"\n}\n\n"
+							"raw": "{\n      \"email\": \"xyz@yahoo.com\",\n        \"password\":\"abc\"\n}\n\n"
 						},
 						"url": {
 							"raw": "http://localhost:3400/api/user/signin",
