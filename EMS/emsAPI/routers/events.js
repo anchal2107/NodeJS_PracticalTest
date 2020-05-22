@@ -34,7 +34,7 @@ router.post("/SearchEvents",checkAuth,  controller.searchEvents);
 router.post("/filterByDate",checkAuth,  controller.filterByDate);
 router.post("/getEventbyName",checkAuth,  controller.getEventbyName);
 
-
+router.post("/searchFilterDateSort",checkAuth,  controller.searchFilterDateSort);
 
 
 
