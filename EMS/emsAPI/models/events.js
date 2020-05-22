@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 //validation in mongodb while add
 // like price is required
 const eventsSchema = mongoose.Schema({
-    _id:mongoose.Schema.Types.ObjectId,
+  //  _id:mongoose.Schema.Types.ObjectId,
     eventName:{type:String, required:true},
     userEmail:{type:String, required:true},
     details:{type:String},

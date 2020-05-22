@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 // validatation is dont while before saving we .. validate.
 
 const usersSchema = mongoose.Schema({
-    _id:mongoose.Schema.Types.ObjectId,
+    //_id:mongoose.Schema.Types.ObjectId,
     userName:{type:String, required:true},
     //useremail will be verified with a parttern
     email:{
