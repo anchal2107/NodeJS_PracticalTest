@@ -16,7 +16,7 @@ exports.createSimpleEvent = (req, res, next) => {
     .then((result) => {
       if (result == null || result.length <= 0) {
         var newEvent = new model({
-          _id: new mongoose.Types.ObjectId(),
+          //_id: new mongoose.Types.ObjectId(),
           eventName: req.body.eventName,
           userEmail: req.body.userEmail,
           details: req.body.details,
@@ -68,7 +68,8 @@ exports.createComplexEvent = (req, res, next) => {
         //var rawinvitationemails = ['email','email2',...]
 
         var newEvent = new model({
-          _id: new mongoose.Types.ObjectId(),
+        //  _id: new mongoose.Types.ObjectId(),
+        _id:null,
           eventName: req.body.eventName,
           userEmail: req.body.userEmail,
           details: req.body.details,

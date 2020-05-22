@@ -26,7 +26,7 @@ exports.signup = (req, res, next) => {
         .then((result) => {
           if (result == null || result.length <= 0) {
             var newUser = new model({
-              _id: new mongoose.Types.ObjectId(),
+              //_id: new mongoose.Types.ObjectId(),
               userName: req.body.userName,
               email: req.body.email,
               password: encryptedPassword,
@@ -148,7 +148,7 @@ exports.create = (req, res, next) => {
   bcrpty.hash(req.body.password, 10, (err, hashdata) => {
     if (!err) {
       const user = new model({
-        _id: new mongoose.Types.ObjectId(),
+       // _id: new mongoose.Types.ObjectId(),
         email: req.body.email,
         userName: req.body.userName,
         password: hashdata,
