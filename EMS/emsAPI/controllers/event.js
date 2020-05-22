@@ -68,8 +68,8 @@ exports.createComplexEvent = (req, res, next) => {
         //var rawinvitationemails = ['email','email2',...]
 
         var newEvent = new model({
-        //  _id: new mongoose.Types.ObjectId(),
-        _id:null,
+          //  _id: new mongoose.Types.ObjectId(),
+          _id: null,
           eventName: req.body.eventName,
           userEmail: req.body.userEmail,
           details: req.body.details,
@@ -123,8 +123,8 @@ exports.listAllEvents = (req, res, next) => {
 };
 
 exports.getEventbyName = (req, res, next) => {
-    //db.stuff.find( { foo: /^bar$/i } );
-    //for case insensitive just need to use above line
+  //db.stuff.find( { foo: /^bar$/i } );
+  //for case insensitive just need to use above line
   const eventName = req.body.eventName;
   model.find({ eventName: eventName }, function (err, doc) {
     if (!err) {
@@ -186,50 +186,6 @@ exports.updateEvent = (req, res, next) => {
   });
 
   // update event description here vai event name.
-};
-
-exports.getSortEventByName = (req, res, next) => {
-  // show event name
-  //member of event
-  // invites of event
-  var mysort = { eventName: 1 };
-  model
-    .find({}, function (err, doc) {
-      if (!err) {
-        if (doc != null && doc.length > 0) {
-          res.status(200).json(doc);
-        } else {
-          res.status(404).json({ message: "No Data Found!" });
-        }
-      } else {
-        res.status(500).json({ message: err });
-      }
-    })
-    .sort(mysort);
-};
-
-exports.filterByDate = (req, res, next) => {
-  // here will have search from a text in mongo db some what similar event will be searched for user here .
-  //event created range of filter
-  var startdate = req.body.startdate;
-  var enddate = req.body.enddate;
-  var mysort = { doc: 1 };
-  //var filterquery = { doc: { $gte: '1987-10-19', $lte: '1987-10-26' } }
-  var filterquery = { doc: { $gte: startdate, $lte: enddate } };
-  //var filterquery = { doc: { $gte: new Date(new Date(startdate).setHours(00, 00, 00)), $lte: new Date(new Date(enddate).setHours(23, 59, 59)) } };
-  model
-    .find(filterquery, function (err, doc) {
-      if (!err) {
-        if (doc != null && doc.length > 0) {
-          res.status(200).json(doc);
-        } else {
-          res.status(404).json({ message: "No Data Found!" });
-        }
-      } else {
-        res.status(500).json({ message: err });
-      }
-    })
-    .sort(mysort);
 };
 
 exports.invitInEvent = (req, res, next) => {
@@ -355,40 +311,44 @@ exports.updateJoinEvent = (req, res, next) => {
 
         var eventobjt = new model(doc[0]);
         var thisEventInvited = eventobjt.invited;
-        var thisEventmembers= eventobjt.members;
-        var isMyEmailIsInvited = thisEventInvited.filter((item) => {
-          //return item.userEmail=='hello';
-          return item.userEmail==yourEmailId;
-        }).length==0;
-if(isMyEmailIsInvited)
-{
-    res.status(500).json("you are not invited in this event you cannot join this event");
-}
-var isAlreadyMember = thisEventmembers.filter((item) => {
-    //return item.userEmail=='hello';
-    return item.userEmail==yourEmailId;
-  }).length==0;
+        var thisEventmembers = eventobjt.members;
+        var isMyEmailIsInvited =
+          thisEventInvited.filter((item) => {
+            //return item.userEmail=='hello';
+            return item.userEmail == yourEmailId;
+          }).length == 0;
+        if (isMyEmailIsInvited) {
+          res
+            .status(500)
+            .json(
+              "you are not invited in this event you cannot join this event"
+            );
+        }
+        var isAlreadyMember =
+          thisEventmembers.filter((item) => {
+            //return item.userEmail=='hello';
+            return item.userEmail == yourEmailId;
+          }).length == 0;
 
-  if(!isAlreadyMember)
-  {
-      res.status(500).json("your are already a member so no need to join");
-  }
+        if (!isAlreadyMember) {
+          res.status(500).json("your are already a member so no need to join");
+        }
 
+        thisEventmembers.push({
+          userEmail: yourEmailId,
+          isActive: true,
+          isAdmin: false,
+        });
 
-  thisEventmembers.push({
-    userEmail: yourEmailId,
-    isActive: true,
-    isAdmin: false,
-  });
-
-  var diffEmails = thisEventInvited.filter((item) => {
-   return (item.userEmail!=yourEmailId) ;
-  });
-
-
+        var diffEmails = thisEventInvited.filter((item) => {
+          return item.userEmail != yourEmailId;
+        });
 
         var paramfilterquery = { eventName: eventName };
-        var updateDictionaryList = [{ key: "invited", value: diffEmails },{ key: "members", value: thisEventmembers }];
+        var updateDictionaryList = [
+          { key: "invited", value: diffEmails },
+          { key: "members", value: thisEventmembers },
+        ];
 
         const updateOps = {};
         for (const ops of updateDictionaryList) {
@@ -424,26 +384,126 @@ exports.searchEvents = (req, res, next) => {
   // db.collection.createIndex()
   //https://docs.mongodb.com/manual/core/index-text/
 
-
-//   MongoDB Enterprise > db.events.createIndex( { eventName: "text" } );
-//   {
-//           "createdCollectionAutomatically" : false,
-//           "numIndexesBefore" : 1,
-//           "numIndexesAfter" : 2,
-//           "ok" : 1
-//   }
-//   MongoDB Enterprise >
-//{ $text: { $search: "zirst Event11" } }
-const search = req.body.search;
-model.find({ $text: { $search: search } }, function (err, doc) {
-  if (!err) {
-    if (doc != null && doc.length > 0) {
-      res.status(200).json(doc);
+  //   MongoDB Enterprise > db.events.createIndex( { eventName: "text" } );
+  //   {
+  //           "createdCollectionAutomatically" : false,
+  //           "numIndexesBefore" : 1,
+  //           "numIndexesAfter" : 2,
+  //           "ok" : 1
+  //   }
+  //   MongoDB Enterprise >
+  //{ $text: { $search: "zirst Event11" } }
+  const search = req.body.search;
+  model.find({ $text: { $search: search } }, function (err, doc) {
+    if (!err) {
+      if (doc != null && doc.length > 0) {
+        res.status(200).json(doc);
+      } else {
+        res.status(404).json({ message: "No Data Found!" });
+      }
     } else {
-      res.status(404).json({ message: "No Data Found!" });
+      res.status(500).json({ message: err });
     }
-  } else {
-    res.status(500).json({ message: err });
+  });
+};
+
+exports.getSortEventByName = (req, res, next) => {
+  // show event name
+  //member of event
+  // invites of event
+  var mysort = { eventName: 1 };
+  model
+    .find({}, function (err, doc) {
+      if (!err) {
+        if (doc != null && doc.length > 0) {
+          res.status(200).json(doc);
+        } else {
+          res.status(404).json({ message: "No Data Found!" });
+        }
+      } else {
+        res.status(500).json({ message: err });
+      }
+    })
+    .sort(mysort);
+};
+
+exports.filterByDate = (req, res, next) => {
+  // here will have search from a text in mongo db some what similar event will be searched for user here .
+  //event created range of filter
+  var startdate = req.body.startdate;
+  var enddate = req.body.enddate;
+  var mysort = { doc: 1 };
+  //var filterquery = { doc: { $gte: '1987-10-19', $lte: '1987-10-26' } }
+  var filterquery = { doc: { $gte: startdate, $lte: enddate } };
+  //var filterquery = { doc: { $gte: new Date(new Date(startdate).setHours(00, 00, 00)), $lte: new Date(new Date(enddate).setHours(23, 59, 59)) } };
+  model
+    .find(filterquery, function (err, doc) {
+      if (!err) {
+        if (doc != null && doc.length > 0) {
+          res.status(200).json(doc);
+        } else {
+          res.status(404).json({ message: "No Data Found!" });
+        }
+      } else {
+        res.status(500).json({ message: err });
+      }
+    })
+    .sort(mysort);
+};
+
+exports.searchFilterDateSort = (req, res, next) => {
+  var dateFilter = req.body.dateFilter;
+  var isSortByEventName = req.body.isSortByEventName;
+  var eventNameSearch = req.body.eventNameSearch;
+  var Query = {};
+  var isDoAddJoin = false;
+  var mysort = {};
+  if (!(dateFilter == null || dateFilter == undefined || dateFilter.length == 0) ) {
+    var startdate = dateFilter.startdate;
+    var enddate = dateFilter.enddate;
+    Query.doc= { $gte: startdate, $lte: enddate } ;
+    //{doc: { $gte: new Date("2020-05-15"),$lte: new Date("2020-05-19")} }
+    mysort.doc= 1 ;
+    isDoAddJoin = true;
   }
-});
+  if (!(isSortByEventName == null || isSortByEventName == undefined ||isSortByEventName.length == 0)  ){
+     var eventsortvalue =1;
+  if (isSortByEventName == true) 
+  {
+    eventsortvalue = 1;
+  }
+  else
+  {
+    eventsortvalue:-1;
+  }  
+  mysort.eventName=eventsortvalue ;   
+    console.log(`sort query ${JSON.stringify(mysort)}`);
+  }
+ 
+
+ 
+
+  if (!(eventNameSearch == null || eventNameSearch == undefined ||eventNameSearch.length == 0)  ) {
+    var searchQuery = { $text: { $search: eventNameSearch } };
+    //  {$and:[{ $text: { $search: 'Zirst' }},{doc: { $gte: new Date("2020-05-15"),$lte: new Date("2020-05-19")}}]}
+    if (isDoAddJoin==true) {
+      Query = {$and: [  searchQuery , Query ]};
+    }
+    else
+    {
+      Query = searchQuery;
+    }
+  }
+
+  model.find(Query, function (err, doc) {
+    if (!err) {
+      if (doc != null && doc.length > 0) {
+        res.status(200).json(doc);
+      } else {
+        res.status(404).json({ message: "No Data Found!" });
+      }
+    } else {
+      res.status(500).json({ message: err });
+    }
+  }).sort(mysort);
 };
